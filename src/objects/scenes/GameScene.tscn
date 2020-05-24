@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/objects/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/objects/others/En_Creator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/bg.png" type="Texture" id=3]
+[ext_resource path="res://addons/scrolling_background/scrolling_background.gd" type="Script" id=4]
+[ext_resource path="res://assets/tiles/tileblock.png" type="Texture" id=5]
+[ext_resource path="res://src/objects/scenes/GameScene.gd" type="Script" id=6]
+[ext_resource path="res://assets/ui/rotation_btn.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/rotation_btn_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/fire_btn.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/fire_btn_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/fonts/pixelfont.ttf" type="DynamicFontData" id=11]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "tileblock.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 244, 738 )
+
+[node name="En_Creator" parent="." instance=ExtResource( 2 )]
+position = Vector2( 240.149, 29.2132 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1376256, 0, 0, 1376257, 0, 0, 1376258, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1441792, 0, 0, 1441793, 0, 0, 1441794, 0, 0, 1441804, 0, 0, 1441805, 0, 0, 1441806, 0, 0, 1507328, 0, 0, 1507329, 0, 0, 1507330, 0, 0, 1507340, 0, 0, 1507341, 0, 0, 1507342, 0, 0, 1572864, 0, 0, 1572865, 0, 0, 1572866, 0, 0, 1572876, 0, 0, 1572877, 0, 0, 1572878, 0, 0, 1638400, 0, 0, 1638401, 0, 0, 1638402, 0, 0, 1638412, 0, 0, 1638413, 0, 0, 1638414, 0, 0, 1703936, 0, 0, 1703937, 0, 0, 1703938, 0, 0, 1703939, 0, 0, 1703947, 0, 0, 1703948, 0, 0, 1703949, 0, 0, 1703950, 0, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -4
+
+[node name="ScrollingBackground" type="Node" parent="CanvasLayer"]
+script = ExtResource( 4 )
+texture = ExtResource( 3 )
+speed_x = 0
+speed_y = -1
+scale = 4.0
+modulate = null
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonRotate" type="TextureButton" parent="UI"]
+anchor_left = -0.0451233
+anchor_top = -0.0451233
+anchor_right = -0.0451233
+anchor_bottom = -0.0451233
+margin_left = 391.684
+margin_top = 767.123
+margin_right = 455.684
+margin_bottom = 831.123
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonFire" type="TextureButton" parent="UI"]
+margin_left = 14.4399
+margin_top = 765.318
+margin_right = 78.4399
+margin_bottom = 829.318
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LblScore" type="Label" parent="UI"]
+margin_left = 14.805
+margin_top = 9.70508
+margin_right = 93.805
+margin_bottom = 29.7051
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.941176, 0.92549, 0.886275, 1 )
+text = "SCORE:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LblLife" type="Label" parent="UI"]
+margin_left = 354.144
+margin_top = 7.90009
+margin_right = 433.144
+margin_bottom = 27.9001
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.960784, 0.309804, 0.309804, 1 )
+text = "Life: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="UI/ButtonRotate" to="Player" method="_on_ButtonRotate_pressed"]
+[connection signal="pressed" from="UI/ButtonFire" to="Player" method="_on_ButtonFire_pressed"]
